@@ -1,0 +1,27 @@
+{
+  "_note": "PLACEHOLDER VALUES - a clinician must review every range against your local lab and current guidelines before this ships to real users.",
+  "general": [
+    { "name": "sodium", "range": "135-145 mmol/L" },
+    { "name": "potassium", "range": "3.5-5.0 mmol/L" },
+    { "name": "creatinine", "range": "60-110 umol/L" },
+    { "name": "CRP", "range": "under 5 mg/L" }
+  ],
+  "cardio": [
+    { "name": "troponin", "range": "under 14 ng/L" },
+    { "name": "BNP", "range": "under 100 pg/mL" },
+    { "name": "INR", "range": "0.8-1.2" },
+    { "name": "CK", "range": "30-200 U/L" }
+  ],
+  "renal": [
+    { "name": "creatinine", "range": "60-110 umol/L" },
+    { "name": "eGFR", "range": "over 90 mL/min" },
+    { "name": "urea", "range": "2.5-7.8 mmol/L" },
+    { "name": "potassium", "range": "3.5-5.0 mmol/L" }
+  ],
+  "resp": [
+    { "name": "pH", "range": "7.35-7.45" },
+    { "name": "PaO2", "range": "over 10.6 kPa" },
+    { "name": "PaCO2", "range": "4.7-6.0 kPa" },
+    { "name": "HCO3", "range": "22-26 mmol/L" }
+  ]
+}

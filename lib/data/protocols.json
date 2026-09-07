@@ -1,0 +1,6 @@
+{
+  "_note": "PLACEHOLDER PROTOCOLS - draft only. Clinical review required before any real use. Scope stays crisis-only, not full specialty coverage.",
+  "breathing": { "steps": ["assess airway patency", "high-flow oxygen", "check sats and resp rate", "call your registrar now"] },
+  "chest_pain": { "steps": ["ABCDE first", "12-lead ECG immediately", "aspirin 300mg if no contraindication", "call your registrar now"] },
+  "allergic_reaction": { "steps": ["remove the trigger, ABCDE", "adrenaline 500mcg IM (adult)", "high-flow oxygen, IV fluids", "call your registrar now"] }
+}

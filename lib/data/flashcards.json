@@ -1,0 +1,23 @@
+{
+  "_note": "PLACEHOLDER STUDY CONTENT - standard-teaching level facts for the prototype, but every card needs a clinician's sign-off before this is shown to real users.",
+  "em": [
+    { "q": "first-line treatment for anaphylaxis", "a": "IM adrenaline 500mcg, repeat every 5 minutes", "read": "Anaphylaxis is treated first with IM adrenaline 500mcg into the anterolateral thigh, repeated every 5 minutes if needed, alongside high-flow oxygen and IV fluids." },
+    { "q": "target oxygen saturation with no risk of CO2 retention", "a": "94 to 98 percent", "read": "For most acutely unwell patients without a risk of CO2 retention, oxygen therapy targets a saturation of 94 to 98 percent." }
+  ],
+  "med": [
+    { "q": "most common cause of community-acquired pneumonia", "a": "Streptococcus pneumoniae", "read": "Streptococcus pneumoniae remains the most common organism isolated in community-acquired pneumonia across most age groups." },
+    { "q": "first-line rate control in stable atrial fibrillation", "a": "a beta-blocker or rate-limiting calcium channel blocker", "read": "Rate control in stable AF is usually achieved first with a beta-blocker or a rate-limiting calcium channel blocker such as diltiazem." }
+  ],
+  "rad": [
+    { "q": "classic CXR finding in pneumothorax", "a": "a visible pleural line with no lung markings beyond it", "read": "A pneumothorax on chest x-ray shows a thin visible pleural line, with no lung markings visible peripheral to that line." },
+    { "q": "CT finding suggestive of acute appendicitis", "a": "a dilated, non-compressible appendix over 6mm with fat stranding", "read": "On CT, acute appendicitis typically shows a dilated, non-compressible appendix greater than 6mm in diameter with adjacent fat stranding." }
+  ],
+  "path": [
+    { "q": "cell type pathognomonic for Hodgkin lymphoma", "a": "Reed-Sternberg cells", "read": "Reed-Sternberg cells, large binucleate cells with prominent nucleoli, are considered pathognomonic for classical Hodgkin lymphoma." },
+    { "q": "most common subtype of renal cell carcinoma", "a": "clear cell renal cell carcinoma", "read": "Clear cell renal cell carcinoma is the most common subtype, accounting for the majority of renal cell carcinomas." }
+  ],
+  "anaes": [
+    { "q": "normal end-tidal CO2 range", "a": "35 to 45 mmHg", "read": "Normal end-tidal CO2 in a mechanically ventilated patient is roughly 35 to 45 mmHg, closely tracking arterial CO2 in most situations." },
+    { "q": "first drug given in a shockable adult cardiac arrest rhythm", "a": "adrenaline 1mg IV after the third shock", "read": "In a shockable rhythm during adult cardiac arrest, adrenaline 1mg IV is given after the third shock, then every other cycle." }
+  ]
+}
