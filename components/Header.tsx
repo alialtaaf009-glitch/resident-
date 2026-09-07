@@ -6,7 +6,7 @@ import { Bell, User } from 'lucide-react';
 // to add a real `alarms` table + push notifications.
 const startingAlarms = [
   { label: '6:00 AM \u00b7 weekdays', on: true },
-  { label: 'before ward round \u00b7 7:45 AM', on: false },
+  { label: 'Before ward round \u00b7 7:45 AM', on: false },
 ];
 
 export function Header() {
@@ -15,7 +15,7 @@ export function Header() {
   const [alarms, setAlarms] = useState(startingAlarms);
 
   function quickSet(label: string) {
-    setMessage(`alarm set for ${label}`);
+    setMessage(`Alarm set for ${label}`);
   }
 
   function toggleAlarm(i: number) {
@@ -24,15 +24,20 @@ export function Header() {
 
   return (
     <div className="mb-3">
-      <div className="flex items-center justify-between">
-        <p className="text-xs text-[#ff5a2e] tracking-widest">resident</p>
-        <div className="flex items-center gap-4">
-          <button onClick={() => setOpen(!open)} aria-label="alarms">
+      {/* Three columns of equal width keep the wordmark optically centered
+          no matter how wide the icons on either side get. */}
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+        <div />
+
+        <p className="text-xs text-[#ff5a2e] tracking-[0.2em] uppercase">resident</p>
+
+        <div className="flex items-center gap-4 justify-end">
+          <button onClick={() => setOpen(!open)} aria-label="Alarms">
             <Bell size={19} className="text-neutral-100" />
           </button>
           <button
             className="w-7 h-7 rounded-full bg-[#18181b] border border-white/10 flex items-center justify-center"
-            aria-label="profile"
+            aria-label="Profile"
           >
             <User size={14} className="text-neutral-400" />
           </button>
@@ -41,9 +46,9 @@ export function Header() {
 
       {open && (
         <div className="bg-[#18181b] border border-white/10 rounded-2xl p-3 mt-3">
-          <p className="text-xs text-neutral-400 mb-2">quick alarm</p>
+          <p className="text-xs text-neutral-400 mb-2">Quick alarm</p>
           <div className="flex flex-wrap gap-2 mb-2">
-            {['6:00 shift start', 'match next shift', 'custom'].map((label) => (
+            {['6:00 shift start', 'Match next shift', 'Custom'].map((label) => (
               <button
                 key={label}
                 onClick={() => quickSet(label)}
@@ -59,7 +64,7 @@ export function Header() {
               <span className="text-sm text-neutral-100">{a.label}</span>
               <button
                 onClick={() => toggleAlarm(i)}
-                aria-label={`toggle ${a.label}`}
+                aria-label={`Toggle ${a.label}`}
                 className={`w-9 h-5 rounded-full relative transition-colors ${a.on ? 'bg-[#ff5a2e]' : 'bg-white/10'}`}
               >
                 <span
