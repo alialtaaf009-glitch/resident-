@@ -1,14 +1,15 @@
 'use client';
 import { useState } from 'react';
-import { Check, Phone, UserCog, Stethoscope, Building2 } from 'lucide-react';
+import { Check, Phone, Pencil, Plus, Trash2, X } from 'lucide-react';
 import { useShift } from '@/lib/shift-context';
 
-// Placeholder - in a real deployment these come from the trust's on-call rota,
-// or the user fills them in at the start of each shift.
-const onTonight = [
-  { role: 'Med reg', icon: <UserCog size={15} /> },
-  { role: 'Anaesthetics', icon: <Stethoscope size={15} /> },
-  { role: 'Site manager', icon: <Building2 size={15} /> },
+type Contact = { id: number; role: string; number: string };
+
+// Starting suggestions - the user overwrites these at the start of a shift.
+const defaultContacts: Contact[] = [
+  { id: 1, role: 'Med reg', number: '' },
+  { id: 2, role: 'Anaesthetics', number: '' },
+  { id: 3, role: 'Site manager', number: '' },
 ];
 
 function Toggle({
@@ -50,6 +51,11 @@ export default function OnCall() {
   const [draft, setDraft] = useState('');
   const [wake, setWake] = useState('');
 
+  // TODO: persist contacts per user once auth exists - right now they reset
+  // on refresh, which is exactly when someone mid-shift would need them.
+  const [contacts, setContacts] = useState<Contact[]>(defaultContacts);
+  const [editing, setEditing] = useState(false);
+
   function setNap(mins: number) {
     const d = new Date(Date.now() + mins * 60000);
     setWake(d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
@@ -59,6 +65,18 @@ export default function OnCall() {
     if (!draft.trim()) return;
     addJob(draft.trim(), urgent);
     setDraft('');
+  }
+
+  function updateContact(id: number, field: 'role' | 'number', value: string) {
+    setContacts(contacts.map((c) => (c.id === id ? { ...c, [field]: value } : c)));
+  }
+
+  function addContact() {
+    setContacts([...contacts, { id: Date.now(), role: '', number: '' }]);
+  }
+
+  function removeContact(id: number) {
+    setContacts(contacts.filter((c) => c.id !== id));
   }
 
   return (
@@ -110,7 +128,6 @@ export default function OnCall() {
         <p className="text-[11px] text-neutral-600 mb-4">Nothing outstanding</p>
       ) : (
         <div className="mb-4">
-          {/* Urgent jobs sort to the top */}
           {[...jobs]
             .sort((a, b) => Number(b.urgent) - Number(a.urgent))
             .map((job) => (
@@ -145,18 +162,74 @@ export default function OnCall() {
         {wake ? `Wake by ${wake}` : 'Pick a length, get a wake-up alarm ready'}
       </p>
 
-      {/* Escalation contacts for this shift */}
-      <p className="text-[11px] text-neutral-400 mb-1">On tonight</p>
-      {onTonight.map((c) => (
-        <div key={c.role} className="flex items-center gap-2.5 py-2.5 border-b border-white/5">
-          <span className="text-[#ff5a2e]">{c.icon}</span>
-          <span className="flex-1 text-xs">{c.role}</span>
-          <Phone size={14} className="text-[#ff5a2e]" />
-        </div>
-      ))}
-      <p className="text-[10px] text-neutral-600 mt-3">
-        Add your own numbers at the start of each shift - these are placeholders
-      </p>
+      {/* Escalation contacts - editable */}
+      <div className="flex items-center justify-between mb-1">
+        <p className="text-[11px] text-neutral-400">On tonight</p>
+        <button
+          onClick={() => setEditing(!editing)}
+          className="flex items-center gap-1 text-[11px] text-[#ff5a2e]"
+          aria-label={editing ? 'Done editing contacts' : 'Edit contacts'}
+        >
+          {editing ? <X size={13} /> : <Pencil size={13} />}
+          {editing ? 'Done' : 'Edit'}
+        </button>
+      </div>
+
+      {editing ? (
+        <>
+          {contacts.map((c) => (
+            <div key={c.id} className="flex items-center gap-2 py-2 border-b border-white/5">
+              <input
+                value={c.role}
+                onChange={(e) => updateContact(c.id, 'role', e.target.value)}
+                placeholder="Role"
+                className="w-[38%] bg-[#18181b] border border-white/10 rounded-lg px-2 py-1.5 text-[11px] outline-none focus:border-[#ff5a2e]"
+              />
+              <input
+                value={c.number}
+                onChange={(e) => updateContact(c.id, 'number', e.target.value)}
+                placeholder="Bleep or number"
+                inputMode="tel"
+                className="flex-1 bg-[#18181b] border border-white/10 rounded-lg px-2 py-1.5 text-[11px] outline-none focus:border-[#ff5a2e]"
+              />
+              <button onClick={() => removeContact(c.id)} aria-label={`Remove ${c.role || 'contact'}`}>
+                <Trash2 size={14} className="text-neutral-600" />
+              </button>
+            </div>
+          ))}
+          <button
+            onClick={addContact}
+            className="flex items-center gap-1.5 mt-3 px-3 py-2 rounded-full border border-white/10 bg-[#18181b] text-[11px]"
+          >
+            <Plus size={13} className="text-[#ff5a2e]" />
+            Add contact
+          </button>
+        </>
+      ) : (
+        <>
+          {contacts.map((c) => (
+            <div key={c.id} className="flex items-center gap-2.5 py-2.5 border-b border-white/5">
+              <span className="flex-1 text-xs">{c.role || 'Unnamed'}</span>
+              {c.number ? (
+                // tel: links open the phone dialer straight from the browser
+                <a
+                  href={`tel:${c.number.replace(/\s/g, '')}`}
+                  className="flex items-center gap-1.5 text-[#ff5a2e]"
+                  aria-label={`Call ${c.role}`}
+                >
+                  <span className="text-[11px]">{c.number}</span>
+                  <Phone size={14} />
+                </a>
+              ) : (
+                <span className="text-[11px] text-neutral-600">Not set</span>
+              )}
+            </div>
+          ))}
+          {contacts.length === 0 && (
+            <p className="text-[11px] text-neutral-600 py-2">No contacts yet - tap Edit to add some</p>
+          )}
+        </>
+      )}
     </main>
   );
 }
