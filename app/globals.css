@@ -10,3 +10,23 @@ body {
   background: #000;
   color: #f5f5f5;
 }
+
+/* Gentle fade rather than a hard blink - a flashing element is an
+   accessibility problem and is genuinely irritating at 3am. */
+@keyframes shift-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.shift-pulse {
+  animation: shift-pulse 2s ease-in-out infinite;
+}
+
+/* Respect the OS "reduce motion" setting - the dot still shows, it just
+   stops animating. */
+@media (prefers-reduced-motion: reduce) {
+  .shift-pulse {
+    animation: none;
+    opacity: 1;
+  }
+}
