@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Bell, User } from 'lucide-react';
+import { useShift } from '@/lib/shift-context';
 
 // Alarms live in local state for now - see README "build order" for when
 // to add a real `alarms` table + push notifications.
@@ -13,6 +14,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [alarms, setAlarms] = useState(startingAlarms);
+  const { onCall, bleepTriage } = useShift();
 
   function quickSet(label: string) {
     setMessage(`Alarm set for ${label}`);
@@ -24,10 +26,26 @@ export function Header() {
 
   return (
     <div className="mb-3">
-      {/* Three columns of equal width keep the wordmark optically centered
-          no matter how wide the icons on either side get. */}
+      {/* Three equal columns keep the wordmark centered regardless of what
+          sits on either side. */}
       <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-        <div />
+        {/* Shift status dots - only render when active */}
+        <div className="flex items-center gap-1.5">
+          {onCall && (
+            <span
+              className="w-2 h-2 rounded-full bg-[#ff5a2e]"
+              role="status"
+              aria-label="On call mode active"
+            />
+          )}
+          {bleepTriage && (
+            <span
+              className="w-2 h-2 rounded-full bg-[#3b9dff] shift-pulse"
+              role="status"
+              aria-label="Bleep triage active"
+            />
+          )}
+        </div>
 
         <p className="text-xs text-[#ff5a2e] tracking-[0.2em] uppercase">resident</p>
 
