@@ -1,6 +1,6 @@
 import { HomeRow } from '@/components/HomeRow';
 import { Header } from '@/components/Header';
-import { Stethoscope, Phone, FlaskConical, NotebookPen, BookOpen, TriangleAlert, GraduationCap } from 'lucide-react';
+import { Stethoscope, Phone, FlaskConical, NotebookPen, BookOpen, TriangleAlert, GraduationCap, Users } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
       <HomeRow href="/labs" icon={<FlaskConical size={18} />} title="lab values" subtitle="filter by rotation" />
       <HomeRow href="/mywork" icon={<NotebookPen size={18} />} title="my work" subtitle="logbook and research notes" />
       <HomeRow href="/study" icon={<GraduationCap size={18} />} title="study" subtitle="specialty flashcards, quiz or read" />
+      <HomeRow href="/hub" icon={<Users size={18} />} title="resident hub" subtitle="colleagues on shift with you" />
       <HomeRow href="/books" icon={<BookOpen size={18} />} title="book references" subtitle="Oxford handbook and more" />
       <HomeRow href="/er" icon={<TriangleAlert size={18} />} title="ER quick protocols" subtitle="ABCDE, crisis only" />
     </main>
