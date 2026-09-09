@@ -1,0 +1,61 @@
+{
+  "_note": "PLACEHOLDER CONTENT - the reassurance tips and practical guidance here are drafts. The escalation, prescribing, and consent sections in particular need review by a clinician and alignment with local trust policy before real users see them.",
+  "tips": [
+    "Everyone here was exactly this nervous on day one. Nobody expects you to know everything.",
+    "Double-checking a prescription is not a weakness. It is the job.",
+    "A nurse who has been on this ward ten years knows things you do not. Ask them.",
+    "You will make a mistake. What matters is telling someone quickly.",
+    "You are allowed to say: I do not know, let me find out.",
+    "The jobs list will never be empty. Prioritise the sick patients.",
+    "Eat something. You are no use to anyone lightheaded."
+  ],
+  "kit": ["Stethoscope", "Pen torch", "Reflex hammer", "Black pens x2", "Tourniquet", "Snack and water"],
+  "skills": [
+    "Read a basic ECG",
+    "Interpret a chest X-ray",
+    "Interpret an ABG",
+    "Take blood cultures properly",
+    "Confirm a death",
+    "Write a discharge summary"
+  ],
+  "sbar": [
+    "S - Situation: who you are, who the patient is, what is wrong",
+    "B - Background: relevant history in two sentences",
+    "A - Assessment: your observations and your read on it",
+    "R - Recommendation: what you want them to do"
+  ],
+  "specialties": {
+    "Medicine": "Ward rounds start early and move fast. Your job in week one is the jobs list, bloods, and knowing which patients are sick. Write everything down.",
+    "Surgery": "Rounds are earlier and shorter. Much of your day is post-op checks, wound reviews, and keeping on top of fluids and pain relief.",
+    "ED": "You will see undifferentiated patients with no notes and no diagnosis. Learn the department's triage system early and ask before you discharge anyone.",
+    "Paediatrics": "Doses are weight-based and the margin for error is smaller. Always check with someone. Parents are part of the history."
+  },
+  "prescribing": [
+    "Check allergies before every single prescription",
+    "Weight-based doses need an actual weight, not an estimate",
+    "Check renal function before renally-cleared drugs",
+    "If the dose looks unusual, look it up rather than assuming",
+    "Sign, date, and write legibly - unclear prescriptions cause errors"
+  ],
+  "night": [
+    "Find out who your senior is and how to reach them before the shift starts",
+    "Get a proper handover, and write it down",
+    "Know where the crash trolley is on every ward you cover",
+    "Prioritise: sick patients first, then jobs that cannot wait until morning",
+    "Take your break. A tired doctor makes worse decisions"
+  ],
+  "ethics": [
+    "Consent needs capacity, information, and voluntariness - all three",
+    "Capacity is decision-specific, not a blanket judgement about a person",
+    "Family do not automatically have a right to clinical information",
+    "If you are unsure whether someone has capacity, escalate rather than proceed",
+    "Document consent conversations, not just the outcome"
+  ],
+  "nobody": [
+    "Where the 3am food actually is",
+    "Parking permit, and where not to park",
+    "Locker, scrubs, and swipe access",
+    "Payroll, rota queries, and who to chase"
+  ]
+}
+
