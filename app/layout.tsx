@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ShiftProvider } from '@/lib/shift-context';
 
 export const metadata: Metadata = {
   title: 'Resident',
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white antialiased">{children}</body>
+      <body className="bg-black text-white antialiased">
+        <ShiftProvider>{children}</ShiftProvider>
+      </body>
     </html>
   );
 }
